@@ -138,17 +138,12 @@
                 }
                 var messages = {
                   type: 'text',
-                  text: '何かしらのテキスト'//'email: ' + params.email + '\r\n tel: ' + params.tel
+                  text: 'email: ' + params.email + '\r\n tel: ' + params.tel
                 }
                 liff.sendMessages([
                   messages,
-                  {
-                      type: 'sticker',
-                      packageId: '2',
-                      stickerId: '144'
-                  }
                 ]).then(function () {
-                  window.alert("Message sent");
+                  window.alert("フォームを送信した");
                 }).catch(function (error) {
                   window.alert("Error sending message: " + error);
                 });
