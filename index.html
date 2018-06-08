@@ -70,37 +70,35 @@
               data => {
                 // Now you can call LIFF API
                 const userId = data.context.userId;
-
-                $('#btn_submit').click(function(e){
-
-                  var params = {
-                    email: $('#input_email').val(),
-                    tel: $('#input_tel').val(),
-                  }
-                  var messages = {
-                    type: 'text',
-                    text: '何かしらのテキスト'//'email: ' + params.email + '\r\n tel: ' + params.tel
-                  }
-                  console.log(messages);
-                  liff.sendMessages(messages);
-                })
-
-                $('#btn_submit').click(function(e){
-                  liff.getProfile()
-                  .then(profile => {
-                    const name = profile.displayName
-                    console.log(name);
-                  })
-                  .catch((err) => {
-                    console.log('error', err);
-                  });
-                })
-                
               },
               err => {
                 // LIFF initialization failed
               }
             );
+            $('#btn_submit').click(function(e){
+
+              var params = {
+                email: $('#input_email').val(),
+                tel: $('#input_tel').val(),
+              }
+              var messages = {
+                type: 'text',
+                text: '何かしらのテキスト'//'email: ' + params.email + '\r\n tel: ' + params.tel
+              }
+              console.log(messages);
+              liff.sendMessages(messages);
+            })
+
+            $('#btn_submit').click(function(e){
+              liff.getProfile()
+              .then(profile => {
+                const name = profile.displayName
+                console.log(name);
+              })
+              .catch((err) => {
+                console.log('error', err);
+              });
+            })
           });
 
         </script>
