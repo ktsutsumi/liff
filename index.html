@@ -82,18 +82,18 @@
                     type: 'text',
                     text: '何かしらのテキスト'//'email: ' + params.email + '\r\n tel: ' + params.tel
                   }
-                  console.log(messages);
+                  alert(messages);
                   liff.sendMessages(messages);
                 })
 
-                $('#btn_submit').click(function(e){
+                $('#btn_get_profile').click(function(e){
                   liff.getProfile()
                   .then(profile => {
                     const name = profile.displayName
-                    console.log(name);
+                    alert(name);
                   })
                   .catch((err) => {
-                    console.log('error', err);
+                    alert('error', err);
                   });
                 })
 
