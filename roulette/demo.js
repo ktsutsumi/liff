@@ -12,32 +12,24 @@ $(function(){
 		stopCallback : function($stopElm) {
 			$('.start').removeAttr('disabled');
 			$('.stop').attr('disabled', 'true');
-      let val = $stopElm.attr("value");
-      liff.init(
-        data => {
-          initializeApp(data);
-        },
-        err => {
-          console.log(err);
-          // LIFF initialization failed
-        }
-      );
-      function initializeApp(data){
-        var params = {
-          val: val,
-        }
-        var messages = {
-          type: 'text',
-          text: '獲得したのは ' + val
-        }
-        liff.sendMessages([
-          messages,
-        ]).then(function () {
-          window.alert("送信した");
-        }).catch(function (error) {
-          window.alert("Error sending message: " + error);
-        });
+      var val = $stopElm.attr("value");
+
+      var params = {
+        val: val,
       }
+      var messages = {
+        type: 'text',
+        text: '獲得したのは ' + val
+      }
+      alert('send message');
+      liff.sendMessages([
+        messages,
+      ]).then(function () {
+        window.alert("送信した");
+      }).catch(function (error) {
+        window.alert("Error sending message: " + error);
+      });
+
 		}
 
 	}
