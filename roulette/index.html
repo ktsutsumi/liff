@@ -2,9 +2,91 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Roulette</title>
+		<title>Roulette.js Demo</title>
+		<link rel="stylesheet" href="bootstrap.css"></link>
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/ui-lightness/jquery-ui.css">
+		<link rel="stylesheet" href="bootstrap-responsive.css"></link>
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/ui-lightness/jquery-ui.css">
+		<link rel="stylesheet" href="demo.css"></link>
 	</head>
 	<body>
-      
+		<div class="container">
+			<div class="row center-align">
+				<div class="">
+					<div class="roulette_container" >
+						<div class="roulette" style="display:none;">
+							<img src="star.png" value="スター" />
+							<img src="flower.png" value="フラワー"/>
+							<img src="coin.png" value="コイン" />
+							<img src="mshroom.png" value="キノコ"/>
+							<img src="chomp.png" value="ワンワン"/>
+						</div>
+					</div>
+					<div class="btn_container center-align">
+						<button class="btn btn-large btn-primary start"> START </button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+    <script src="roulette.js"></script>
+		<script src="demo.js"></script>
+    <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
+    <script>
+      $(document).ready(function(){
+        liff.init(
+          data => {
+            initializeApp(data);
+          },
+          err => {
+            console.log(err);
+            // LIFF initialization failed
+          }
+        );
+        function initializeApp(data){
+          // Now you can call LIFF API
+          document.getElementById('languagefield').textContent = data.language;
+          document.getElementById('viewtypefield').textContent = data.context.viewType;
+          document.getElementById('useridfield').textContent = data.context.userId;
+          document.getElementById('utouidfield').textContent = data.context.utouId;
+          document.getElementById('roomidfield').textContent = data.context.roomId;
+          document.getElementById('groupidfield').textContent = data.context.groupId;
+
+          $('#btn_submit').click(function(e){
+
+            var params = {
+              email: $('#input_email').val(),
+              tel: $('#input_tel').val(),
+            }
+            var messages = {
+              type: 'text',
+              text: 'email: ' + params.email + '\r\n tel: ' + params.tel
+            }
+            liff.sendMessages([
+              messages,
+            ]).then(function () {
+              window.alert("フォームを送信した");
+            }).catch(function (error) {
+              window.alert("Error sending message: " + error);
+            });
+          })
+
+          $('#btn_get_profile').click(function(e){
+            liff.getProfile()
+            .then(profile => {
+              const name = profile.displayName
+              alert(name);
+            })
+            .catch((err) => {
+              alert('error', err);
+            });
+          })
+        }
+      });
+
+    </script>
+
 	</body>
 </html>
