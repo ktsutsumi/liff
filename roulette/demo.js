@@ -14,13 +14,10 @@ $(function(){
 			$('.stop').attr('disabled', 'true');
       var val = $stopElm.attr("src");
 
-      var params = {
-        src: val,
-      }
       var messages = {
         type: 'image',
-        originalContentUrl: src,
-        previewImageUrl: src
+        originalContentUrl: val,
+        previewImageUrl: val
       }
       liff.sendMessages([
         messages,
