@@ -12,14 +12,15 @@ $(function(){
 		stopCallback : function($stopElm) {
 			$('.start').removeAttr('disabled');
 			$('.stop').attr('disabled', 'true');
-      var val = $stopElm.attr("value");
+      var val = $stopElm.attr("src");
 
       var params = {
-        val: val,
+        src: val,
       }
       var messages = {
-        type: 'text',
-        text: '獲得したのは ' + val
+        type: 'image',
+        originalContentUrl: src,
+        previewImageUrl: src
       }
       liff.sendMessages([
         messages,
