@@ -13,7 +13,6 @@ $(function(){
 			$('.start').removeAttr('disabled');
 			$('.stop').attr('disabled', 'true');
       var val = $stopElm.attr("src");
-
       var message = {
         type: 'image',
         originalContentUrl: val,
