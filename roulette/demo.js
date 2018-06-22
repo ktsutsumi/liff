@@ -1,10 +1,10 @@
 $(function(){
 
 	$('.roulette').find('img').hover(function(){
-		console.log($(this).height());
 	});
 	var p = {
 		startCallback : function() {
+      $('.start').attr('disabled', 'true');
 		},
 		slowDownCallback : function() {
 			$('.stop').attr('disabled', 'true');
@@ -21,11 +21,10 @@ $(function(){
         type: 'text',
         text: '獲得したのは ' + val
       }
-      alert('send message');
       liff.sendMessages([
         messages,
       ]).then(function () {
-        window.alert("送信した");
+        window.alert("結果を送信した");
       }).catch(function (error) {
         window.alert("Error sending message: " + error);
       });

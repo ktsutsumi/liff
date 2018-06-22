@@ -38,7 +38,6 @@
     $(document).ready(function(){
       liff.init(
         data => {
-          alert('init');
           initializeApp(data);
         },
         err => {
@@ -47,7 +46,6 @@
         }
       );
       function initializeApp(data){
-        alert('initialize');
         var liff = liff;
       }
     });
