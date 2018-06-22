@@ -21,7 +21,7 @@ $(function(){
       liff.sendMessages([
         message,
       ]).then(function () {
-        window.alert("結果を送信した");
+        liff.closeWindow();
       }).catch(function (error) {
         window.alert("Error sending message: " + error);
       });
