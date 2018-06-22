@@ -14,13 +14,13 @@ $(function(){
 			$('.stop').attr('disabled', 'true');
       var val = $stopElm.attr("src");
 
-      var messages = {
+      var message = {
         type: 'image',
         originalContentUrl: val,
         previewImageUrl: val
       }
       liff.sendMessages([
-        messages,
+        message,
       ]).then(function () {
         window.alert("結果を送信した");
       }).catch(function (error) {
